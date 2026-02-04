@@ -2,6 +2,14 @@
   cursor: zoom-in;
 }
 
+.vp-doc img.screenshot {
+  display: block;
+  margin: 14px 0 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  box-shadow: var(--vp-shadow-2);
+}
+
 .medium-zoom-overlay {
   z-index: 1000;
 }

@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 使用教程
-      link: /guide/getting-started
+      link: /guide/QuickStart
     - theme: alt
       text: 常见问题
       link: /reference/faq

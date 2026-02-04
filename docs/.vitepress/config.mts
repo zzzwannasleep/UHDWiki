@@ -49,7 +49,7 @@ export default defineConfig({
         {
           text: "指南",
           items: [
-            { text: "快速开始", link: "/guide/getting-started" },
+            { text: "快速开始", link: "/guide/QuickStart" },
             { text: "写作规范", link: "/guide/writing" }
           ]
         },
