@@ -9,9 +9,6 @@ hero:
     - theme: brand
       text: 使用教程
       link: /guide/QuickStart
-    - theme: alt
-      text: 常见问题
-      link: /reference/faq
 
 features:
   - icon: |

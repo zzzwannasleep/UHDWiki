@@ -38,3 +38,11 @@
 ## 完成
 
 下载完成后即可观看。
+
+## 常见问题
+
+- [常见的卡顿原因](./faq/stutter.md)
+- [视频偏色](./faq/color-cast.md)
+- [剧集没字幕](./faq/no-subtitles.md)
+- [常见的报错代码与原因](./faq/error-codes.md)
+- [更多常见问题](./faq/)

@@ -54,6 +54,16 @@ export default defineConfig({
           ]
         },
         {
+          text: "常见问题",
+          items: [
+            { text: "索引", link: "/guide/faq/" },
+            { text: "常见的卡顿原因", link: "/guide/faq/stutter" },
+            { text: "视频偏色", link: "/guide/faq/color-cast" },
+            { text: "剧集没字幕", link: "/guide/faq/no-subtitles" },
+            { text: "常见的报错代码与原因", link: "/guide/faq/error-codes" }
+          ]
+        },
+        {
           text: "手机端",
           items: [
             { text: "Hills", link: "/guide/mobile/hills" },
@@ -82,14 +92,6 @@ export default defineConfig({
             { text: "剧集申请", link: "/guide/skill-pack/request-series" },
             { text: "洗版申请", link: "/guide/skill-pack/request-remux" },
             { text: "追新申请", link: "/guide/skill-pack/request-new" }
-          ]
-        }
-      ],
-      "/reference/": [
-        {
-          text: "参考",
-          items: [
-            { text: "常见问题", link: "/reference/faq" }
           ]
         }
       ]
