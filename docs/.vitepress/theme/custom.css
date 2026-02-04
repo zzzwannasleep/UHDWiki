@@ -20,40 +20,15 @@
   position: fixed;
   inset: 0;
   background: url('https://bing.img.run/uhd.php') center / cover no-repeat;
-  filter: blur(10px) saturate(1.15);
-  transform: scale(1.08);
-  opacity: 0.6;
+  filter: none;
+  transform: none;
+  opacity: 1;
   z-index: -2;
   pointer-events: none;
 }
 
 .VPContent.is-home::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(
-      1200px circle at 20% 12%,
-      rgba(255, 255, 255, 0.35),
-      rgba(255, 255, 255, 0.78) 60%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.45),
-      rgba(255, 255, 255, 0.78)
-    );
-  z-index: -1;
-  pointer-events: none;
-}
-
-html.dark .VPContent.is-home::after {
-  background:
-    radial-gradient(
-      1200px circle at 20% 12%,
-      rgba(0, 0, 0, 0.12),
-      rgba(0, 0, 0, 0.66) 60%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.66));
+  content: none;
 }
 
 .VPHome .VPHero {
