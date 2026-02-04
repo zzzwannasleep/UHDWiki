@@ -54,10 +54,15 @@ export default defineConfig({
           ]
         },
         {
+          text: "手机端",
+          items: [{ text: "总览", link: "/guide/mobile/overview" }]
+        },
+        {
           text: "PC端",
           items: [
             { text: "小幻影视", link: "/guide/pc/xiaohuan-yingshi" },
-            { text: "Hills Lite", link: "/guide/pc/hills-lite" }
+            { text: "Hills Lite", link: "/guide/pc/hills-lite" },
+            { text: "技能包", link: "/guide/pc/skill-pack" }
           ]
         }
       ],
