@@ -20,3 +20,6 @@ docs/.vitepress/dist/
 Thumbs.db
 .idea/
 .vscode/
+
+# Local scratch
+p*.png

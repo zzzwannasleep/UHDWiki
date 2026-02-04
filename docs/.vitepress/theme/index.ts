@@ -6,7 +6,7 @@ import "./custom.css";
 
 import type { Zoom } from "medium-zoom";
 
-const ZOOM_SELECTOR = ".VPDoc img:not(.no-zoom)";
+const ZOOM_SELECTOR = ".vp-doc img:not(.no-zoom)";
 
 let zoom: Zoom | undefined;
 
