@@ -55,15 +55,24 @@ export default defineConfig({
         },
         {
           text: "手机端",
-          items: [{ text: "总览", link: "/guide/mobile/overview" }]
+          items: [
+            { text: "Hills", link: "/guide/mobile/hills" },
+            { text: "Vidhub", link: "/guide/mobile/vidhub" },
+            { text: "Lenna", link: "/guide/mobile/lenna" },
+            { text: "Forward", link: "/guide/mobile/forward" },
+            { text: "Yamby", link: "/guide/mobile/yamby" }
+          ]
         },
         {
           text: "PC端",
           items: [
             { text: "小幻影视", link: "/guide/pc/xiaohuan-yingshi" },
-            { text: "Hills Lite", link: "/guide/pc/hills-lite" },
-            { text: "技能包", link: "/guide/pc/skill-pack" }
+            { text: "Hills Lite", link: "/guide/pc/hills-lite" }
           ]
+        },
+        {
+          text: "技能包",
+          items: [{ text: "总览", link: "/guide/skill-pack" }]
         }
       ],
       "/reference/": [
