@@ -7,6 +7,34 @@ export default defineConfig({
   lang: "zh-CN",
   title: "UHDWiki",
   description: "UHD 相关知识库",
+  head: [
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        href: `${base}UHDblack.png`,
+        media: "(prefers-color-scheme: light)"
+      }
+    ],
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        href: `${base}UHDwhite.png`,
+        media: "(prefers-color-scheme: dark)"
+      }
+    ],
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        href: `${base}UHDblack.png`
+      }
+    ]
+  ],
 
   lastUpdated: true,
 
@@ -42,4 +70,3 @@ export default defineConfig({
     }
   }
 });
-

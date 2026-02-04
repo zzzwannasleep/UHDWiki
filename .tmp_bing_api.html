@@ -1,0 +1,1691 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="referrer" content="default">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="renderer" content="webkit">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="icon" href="https://cn.bing.com/sa/simg/favicon-2x.ico">
+	<link rel="apple-touch-icon" href="https://cn.bing.com/sa/simg/favicon-2x.ico">
+    <title>开放API接口 - Bing每日壁纸档案库</title>
+    <!-- 使用url函数转换相关路径 -->
+	<link rel="stylesheet" type="text/css" href="https://bing.img.run/usr/themes/photograph/bootstrap3/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://bing.img.run/usr/themes/photograph/fancybox3/jquery.fancybox.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://bing.img.run/usr/themes/photograph/style.css?202602041928" />
+	<style type="text/css">
+	.item-title {
+		opacity: 0.5;
+	}
+	.item-img, .item-title {
+	}
+	.item-link-text {
+		border: none;
+}
+.item {
+	height: 12.8vw;
+}
+@media screen and (max-width: 1199px) {
+	.item {
+		height: 18.4vw;
+	}
+}
+@media screen and (max-width: 991px) {
+	.item {
+		height: 25.6vw;
+	}
+}
+@media screen and (max-width: 767px) {
+	.item {
+		height: 36vw;
+	}
+}
+	#side-button {opacity: 1;}
+	#side-button li {border-radius: 20px;}
+
+.row .post-item {
+	height: 12.8vw;
+}
+@media screen and (max-width: 1199px) {
+	.row .post-item {
+		height: 18.4vw;
+	}
+}
+@media screen and (max-width: 991px) {
+	.row .post-item {
+		height: 25.6vw;
+	}
+}
+@media screen and (max-width: 767px) {
+	.row .post-item {
+		height: 36vw;
+	}
+}
+.post-item-img {
+	height: 100%;
+	object-fit: cover;
+}
+
+/** diyCSS Start **/
+/** diyCSS End **/
+</style>    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <meta name="description" content="Bing官方提供的API接口返回的是json数据，很多朋友想要能够直接获取图片的API接口链接，作为项目背景图所用。通过imgRun提供的开放API接口链接可以简单、快速地获取精美高清的Bing..." />
+<meta name="generator" content="Typecho 1.2.1" />
+<meta name="template" content="photograph" />
+<link rel="alternate" type="application/rss+xml" title="开放API接口 &raquo; Bing每日壁纸档案库 &raquo; RSS 2.0" href="https://bing.img.run/feed/api.html" />
+<link rel="alternate" type="application/rdf+xml" title="开放API接口 &raquo; Bing每日壁纸档案库 &raquo; RSS 1.0" href="https://bing.img.run/feed/rss/api.html" />
+<link rel="alternate" type="application/atom+xml" title="开放API接口 &raquo; Bing每日壁纸档案库 &raquo; ATOM 1.0" href="https://bing.img.run/feed/atom/api.html" />
+<script type="text/javascript">
+(function () {
+    window.TypechoComment = {
+        dom : function (id) {
+            return document.getElementById(id);
+        },
+    
+        create : function (tag, attr) {
+            var el = document.createElement(tag);
+        
+            for (var key in attr) {
+                el.setAttribute(key, attr[key]);
+            }
+        
+            return el;
+        },
+
+        reply : function (cid, coid) {
+            var comment = this.dom(cid), parent = comment.parentNode,
+                response = this.dom('respond-page-35'), input = this.dom('comment-parent'),
+                form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                textarea = response.getElementsByTagName('textarea')[0];
+
+            if (null == input) {
+                input = this.create('input', {
+                    'type' : 'hidden',
+                    'name' : 'parent',
+                    'id'   : 'comment-parent'
+                });
+
+                form.appendChild(input);
+            }
+
+            input.setAttribute('value', coid);
+
+            if (null == this.dom('comment-form-place-holder')) {
+                var holder = this.create('div', {
+                    'id' : 'comment-form-place-holder'
+                });
+
+                response.parentNode.insertBefore(holder, response);
+            }
+
+            comment.appendChild(response);
+            this.dom('cancel-comment-reply-link').style.display = '';
+
+            if (null != textarea && 'text' == textarea.name) {
+                textarea.focus();
+            }
+
+            return false;
+        },
+
+        cancelReply : function () {
+            var response = this.dom('respond-page-35'),
+            holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+
+            if (null != input) {
+                input.parentNode.removeChild(input);
+            }
+
+            if (null == holder) {
+                return true;
+            }
+
+            this.dom('cancel-comment-reply-link').style.display = 'none';
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();
+</script>
+<script type="text/javascript">
+(function () {
+    var event = document.addEventListener ? {
+        add: 'addEventListener',
+        triggers: ['scroll', 'mousemove', 'keyup', 'touchstart'],
+        load: 'DOMContentLoaded'
+    } : {
+        add: 'attachEvent',
+        triggers: ['onfocus', 'onmousemove', 'onkeyup', 'ontouchstart'],
+        load: 'onload'
+    }, added = false;
+
+    document[event.add](event.load, function () {
+        var r = document.getElementById('respond-page-35'),
+            input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = '_';
+        input.value = (function () {
+    var _NG8D = ''///*'6W'*/'6W'
++'85c'//'W9n'
++'3b'//'Omj'
++//'r'
+'b69'+'8b4'//'QLd'
++'RR'//'RR'
++//'FW'
+'988'+'e7'//'T'
++'e0'//'XE0'
++'hl'//'hl'
++'9'//'NE'
++'65f'//'md'
++'b'//'Z6'
++'fc'//'Uq5'
++//'J'
+'J'+'e'//'e9'
++//'9'
+'510'+'b'//'5hk'
++'a3'//'vMK'
+, _ABHHd = [[11,13],[18,20],[25,26]];
+    
+    for (var i = 0; i < _ABHHd.length; i ++) {
+        _NG8D = _NG8D.substring(0, _ABHHd[i][0]) + _NG8D.substring(_ABHHd[i][1]);
+    }
+
+    return _NG8D;
+})();
+
+        if (null != r) {
+            var forms = r.getElementsByTagName('form');
+            if (forms.length > 0) {
+                function append() {
+                    if (!added) {
+                        forms[0].appendChild(input);
+                        added = true;
+                    }
+                }
+            
+                for (var i = 0; i < event.triggers.length; i ++) {
+                    var trigger = event.triggers[i];
+                    document[event.add](trigger, append);
+                    window[event.add](trigger, append);
+                }
+            }
+        }
+    });
+})();
+</script></head>
+<body>
+<!--[if lt IE 8]>
+    <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+<![endif]-->
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+			</button>
+			<a class="navbar-brand" href="https://bing.img.run/"><img class="nav-logo" src="https://bing.img.run/usr/uploads/2022/05/1381902803.svg"></a>
+		</div>
+    	<!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+			<!-- pageNav -->
+										<li><a href="https://bing.img.run/about.html" title="关于">关于</a></li>
+							<li class="active"><a href="https://bing.img.run/api.html" title="开放API接口">开放API接口</a></li>
+						<!-- randomLink -->
+						<!-- cateNav -->
+										<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">年份<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+													<li><a href="https://bing.img.run/2020/" title="2020年度Bing壁纸库">2020年</a></li>
+													<li><a href="https://bing.img.run/2021/" title="2021年度Bing壁纸库">2021年</a></li>
+													<li><a href="https://bing.img.run/2022/" title="2022年度Bing壁纸库">2022年</a></li>
+													<li><a href="https://bing.img.run/2023/" title="2023年度Bing壁纸库">2023年</a></li>
+													<li><a href="https://bing.img.run/2024/" title="2024年度Bing壁纸库">2024年</a></li>
+													<li><a href="https://bing.img.run/2025/" title="2025年度Bing壁纸库">2025年</a></li>
+											</ul>
+				</li>
+						<!-- diyNav -->
+													<li><a href="https://gravatar.img.run" title="Gravatar加速" target="_blank">Gravatar加速</a></li>
+									</ul>
+			<!-- search & setting -->
+			<!-- float search -->
+						<form class="navbar-form navbar-left" id="search" method="post" action="https://bing.img.run/" role="search">
+				<div class="form-group">
+					<label for="s" class="sr-only">搜索关键字</label>
+					<input type="text" id="s" name="s" class="form-control input-search" placeholder="输入关键字搜索">
+					<button type="submit" class="btn btn-default button-search">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+				</div>
+			</form>
+						<!-- right search & setting -->
+			<ul class="nav navbar-nav navbar-right">
+																<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span class="space-5"></span>管理<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+											<li class="last"><a href="https://bing.img.run/admin/login.php?referer=https%3A%2F%2Fbing.img.run%2Fapi.html"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><span class="space-5"></span>登录</a></li>
+																						</ul>
+				</li>
+							</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+<!-- firstVisiting -->
+<!-- mobileCateTags -->
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 class="post-title" itemprop="name headline">开放API接口</h1>
+    <div class="post-content" itemprop="articleBody">
+        <p>Bing官方提供的API接口返回的是json数据，很多朋友想要能够直接获取图片的API接口链接，作为项目背景图所用。</p><p>通过imgRun提供的开放API接口链接可以简单、快速地获取精美高清的Bing壁纸，动态链接，每日自动更新，作为网站背景和电脑壁纸都非常不错。</p><h2>项目主页</h2><p>Bing每日壁纸高清存档：<a href="https://bing.img.run/">https://bing.img.run</a><br>Bing壁纸开放API接口项目主页：<a href="https://bing.img.run/api.html">https://bing.img.run/api.html</a></p><h2>接口演示</h2><p>下面这两张图片都是使用本站开放API链接直接获取的，第一张为Bing今日壁纸，第二张为Bing随机壁纸。随机壁纸每次刷新网页加载的都是不同的哦，F5试一下吧~</p><p><strong>Bing今日壁纸</strong><br><span data-fancybox="gallery" class="post-item" data-src="https://bing.img.run/1920x1080.php"><img src="https://bing.img.run/1920x1080.php" alt="Bing今日壁纸" title="Bing今日壁纸" data-original="https://bing.img.run/1920x1080.php"></span></p><p><strong>Bing随机壁纸</strong><br><span data-fancybox="gallery" class="post-item" data-src="https://bing.img.run/rand.php"><img src="https://bing.img.run/rand.php" alt="Bing随机壁纸" title="Bing随机壁纸" data-original="https://bing.img.run/rand.php"></span></p><h2>使用方法</h2><p>本站开放API接口分两个，一个是获取当日壁纸，另一个是随机获取Bing历史壁纸（收录范围从2020-09-01至今）。</p><p>所有接口都是支持直接使用的链接，可以直接把它当做一个图片url链接来用，插入如下代码：</p><p><strong>Bing今日壁纸</strong>（长期提供服务，地球不停转，我们不停服）</p><pre><code>&lt;img src=&quot;https://bing.img.run/uhd.php&quot; alt=&quot;Bing每日壁纸UHD超高清原图&quot; /&gt;
+&lt;img src=&quot;https://bing.img.run/1920x1080.php&quot; alt=&quot;Bing每日壁纸1080P高清&quot; /&gt;
+&lt;img src=&quot;https://bing.img.run/1366x768.php&quot; alt=&quot;Bing每日壁纸普清&quot; /&gt;
+&lt;img src=&quot;https://bing.img.run/m.php&quot; alt=&quot;Bing每日壁纸手机版1080P高清&quot; /&gt;</code></pre><p><strong>随机获取Bing历史壁纸</strong></p><pre><code>&lt;img src=&quot;https://bing.img.run/rand_uhd.php&quot; alt=&quot;随机获取Bing历史壁纸UHD超高清原图&quot; /&gt;
+&lt;img src=&quot;https://bing.img.run/rand.php&quot; alt=&quot;随机获取Bing历史壁纸1080P高清&quot; /&gt;
+&lt;img src=&quot;https://bing.img.run/rand_1366x768.php&quot; alt=&quot;随机获取Bing历史壁纸普清&quot; /&gt;
+&lt;img src=&quot;https://bing.img.run/rand_m.php&quot; alt=&quot;随机获取Bing历史壁纸手机版1080P高清&quot; /&gt;</code></pre><p>随机获取的Bing历史壁纸库从2020-09-01至今！</p><h2>代码开源</h2><p>开源，是一种互联网精神。本站所有壁纸均来自Bing、开放API接口也是基于Bing官方接口进行制作。本着取之于民用之于民的原则，本人将本站开放API接口开源在Github上。链接：</p><p><a href="https://github.com/mike126126/bing">https://github.com/mike126126/bing</a></p><p>将Github代码克隆一份到你自己的主机（服务器）上，绑定好域名，即可访问。</p><p>需要注意的是，PHP直接输出图片的方式，图片访问走的是服务器流量，速度受限于服务器速度。建议优先选择“跳转至Bing图片直链”的方式使用，直接输出为Bing图片直链，图片访问不占用服务器流量，速度不受服务器邮箱，更快更好用。</p><p>如果您部署源代码部署到自己服务器上，那么就更建议使用302跳转的Bing直链的方式，速度为Bing速度。不想自己部署代码的，可以直接使用<strong>bing.img.run</strong>提供的API服务。</p><h2>文件说明</h2><p>在需要引用图片的地方插入你自己部署好的URL即可。不同参数URL文件说明如下：</p><p>uhd.php　PHP链接直接输出4k超高清原图。</p><p>uhd_302.php　输出4k超高清原图的Bing直链图片。</p><p>1920×1080.php　PHP链接直接输出1920×1080分辨率图片。</p><p>1920x1080_302.php　输出为1920×1080分辨率的Bing直链图片。</p><p>1366×768.php　PHP链接直接输出1366×768分辨率图片。</p><p>1366x768_302.php　输出为1366×768分辨率的Bing直链图片。</p><p>m.php　PHP链接直接输出1080×1920分辨率竖版图片。</p><p>m_302.php　输出为1080×1920分辨率的Bing直链竖版图片。</p><h2>更新日志</h2><p>2022年4月19日，初版1.0.0版本发布；</p><p>2022年5月6日，新增UHD超高清原图输出；</p><p>2022年5月8日，新增随机图输出，随机输出本站收录的Bing历史壁纸；</p>    </div>
+</article>
+    <div id="comments">
+        	<h3>已有 51 条评论</h3>
+    
+    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-62" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/1cf631bf0ee14e88d41e0fb0d95fea27?s=32&amp;r=G" alt="Micage" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">Micage</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-62">
+                    <time itemprop="commentTime"
+                          datetime="2025-04-13T19:50:41+08:00">April 13th, 2025 at 07:50 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>这个api证书过期了啊，有的浏览器要验证，直接打不开</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=62#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-62', 62);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-63" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-63">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T17:59:04+08:00">November 28th, 2025 at 05:59 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=63#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-63', 63);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-59" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/10c354eb2e30b329af6234ae9b2f172c?s=32&amp;r=G" alt="xiaolan" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://www.luntan520.cn/" rel="external nofollow">xiaolan</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-59">
+                    <time itemprop="commentTime"
+                          datetime="2025-03-20T17:50:08+08:00">March 20th, 2025 at 05:50 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>什么时候能更新一下这个ssl证书，说过期了</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=59#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-59', 59);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-64" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-64">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T17:59:19+08:00">November 28th, 2025 at 05:59 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=64#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-64', 64);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-58" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/159fd7e52df4ebf3972ce057d8278ef0?s=32&amp;r=G" alt="竹叶青" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">竹叶青</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-58">
+                    <time itemprop="commentTime"
+                          datetime="2025-03-19T13:48:25+08:00">March 19th, 2025 at 01:48 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>站长，bing.img.run 域名证书到期了啦，无法访问了@Mikelin</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=58#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-58', 58);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-65" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-65">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T17:59:26+08:00">November 28th, 2025 at 05:59 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=65#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-65', 65);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-57" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/5b90eada694cddcbe33401cab5acf3c5?s=32&amp;r=G" alt="StarYears" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://blog.staryears.top" rel="external nofollow">StarYears</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-57">
+                    <time itemprop="commentTime"
+                          datetime="2025-03-15T22:37:25+08:00">March 15th, 2025 at 10:37 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主能不能给我发个uhd.php的源文件呀<br>
+staryears@qq.com<br>
+感谢！</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=57#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-57', 57);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-66" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-66">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T17:59:48+08:00">November 28th, 2025 at 05:59 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>GitHub上有呀</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=66#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-66', 66);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-54" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/96d2bf541349de874bebe36ffa705711?s=32&amp;r=G" alt="devjia" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">devjia</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-54">
+                    <time itemprop="commentTime"
+                          datetime="2025-03-03T20:44:33+08:00">March 3rd, 2025 at 08:44 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>域名 SSL 证书过期啦</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=54#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-54', 54);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-67" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-67">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T17:59:53+08:00">November 28th, 2025 at 05:59 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=67#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-67', 67);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-53" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/24a0f7e8eb95044372a1d874259e9259?s=32&amp;r=G" alt="berserker" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">berserker</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-53">
+                    <time itemprop="commentTime"
+                          datetime="2025-02-24T16:32:08+08:00">February 24th, 2025 at 04:32 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主好，我尝试用您的https://bing.img.run/rand_uhd.php?type=json制作苹果快捷指令以实现随机更换桌面壁纸，但是一直无法获取内容，如果博主用的也是苹果手机的话，能否为我解答一下这个疑惑呢，谢谢您！</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=53#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-53', 53);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-68" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-68">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T18:00:35+08:00">November 28th, 2025 at 06:00 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>可能是ssl证书过期了，现在再看看呢？</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=68#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-68', 68);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-52" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/f72f16bc192493442b08fb0851ead842?s=32&amp;r=G" alt="czk" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://www.szczk.top" rel="external nofollow">czk</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-52">
+                    <time itemprop="commentTime"
+                          datetime="2025-02-22T09:37:40+08:00">February 22nd, 2025 at 09:37 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主，提供下uhd.php rand_uhd.php源文件，谢谢</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=52#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-52', 52);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-50" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/962a7a3296ec052b5410af9508dc608b?s=32&amp;r=G" alt="热心网友" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">热心网友</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-50">
+                    <time itemprop="commentTime"
+                          datetime="2025-02-15T08:53:29+08:00">February 15th, 2025 at 08:53 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>https失效了</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=50#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-50', 50);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-72" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-72">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T18:01:11+08:00">November 28th, 2025 at 06:01 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=72#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-72', 72);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-49" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/2441db0cec3ab08ce53027984ed7f818?s=32&amp;r=G" alt="and" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">and</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-49">
+                    <time itemprop="commentTime"
+                          datetime="2025-02-10T14:34:50+08:00">February 10th, 2025 at 02:34 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主能否提供下uhd.php rand_uhd.php源文件。感谢你！发邮箱即可544025211@qq.com</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=49#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-49', 49);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-46" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/72a06db40a0d937c53b0a0a246211c1f?s=32&amp;r=G" alt="程" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">程</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-46">
+                    <time itemprop="commentTime"
+                          datetime="2025-02-03T19:34:01+08:00">February 3rd, 2025 at 07:34 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>我想问，证书什么时候更新，因为证书就导致网站没背景</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=46#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-46', 46);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-69" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-69">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T18:00:55+08:00">November 28th, 2025 at 06:00 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=69#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-69', 69);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-43" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/974222e8ba97caa712640ca41448393d?s=32&amp;r=G" alt="`" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">`</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-43">
+                    <time itemprop="commentTime"
+                          datetime="2025-01-22T10:42:44+08:00">January 22nd, 2025 at 10:42 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主，网站证书过期了</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=43#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-43', 43);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-70" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-70">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T18:00:59+08:00">November 28th, 2025 at 06:00 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=70#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-70', 70);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-42" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/0ba8cde6b81db3fb5d625cbf85c961d1?s=32&amp;r=G" alt="Tlrenhb" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">Tlrenhb</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-42">
+                    <time itemprop="commentTime"
+                          datetime="2025-01-21T12:08:54+08:00">January 21st, 2025 at 12:08 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>证书过期了</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=42#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-42', 42);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-71" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-71">
+                    <time itemprop="commentTime"
+                          datetime="2025-11-28T18:01:03+08:00">November 28th, 2025 at 06:01 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已更新，谢谢提醒~</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=71#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-71', 71);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-40" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/3e38ef3cf9de33d5063850d7eaf2a85e?s=32&amp;r=G" alt="sheetung" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://moontung.top" rel="external nofollow">sheetung</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-40">
+                    <time itemprop="commentTime"
+                          datetime="2024-12-28T12:49:44+08:00">December 28th, 2024 at 12:49 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>谢谢大佬。用上了</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=40#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-40', 40);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-39" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/536a57d6ac91cde26815c995eb1b8f27?s=32&amp;r=G" alt="八级大狂风" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">八级大狂风</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-39">
+                    <time itemprop="commentTime"
+                          datetime="2024-12-03T18:08:07+08:00">December 3rd, 2024 at 06:08 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主您好，劳烦您发份rand_uhd.php的源码可以吗，1142021480@qq.com，十分感谢</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=39#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-39', 39);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-38" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/8191a696ae6d3157c5a32736e9e7dd20?s=32&amp;r=G" alt="花趣站长" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://www.huaqu.club/" rel="external nofollow">花趣站长</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-38">
+                    <time itemprop="commentTime"
+                          datetime="2024-11-28T12:19:22+08:00">November 28th, 2024 at 12:19 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>哇哦，非常不错的api接口</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=38#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-38', 38);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-36" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/d84200b32a0ff5d06cd747ab2a07df63?s=32&amp;r=G" alt="max" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">max</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-36">
+                    <time itemprop="commentTime"
+                          datetime="2024-11-13T17:32:35+08:00">November 13th, 2024 at 05:32 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主你好<br>
+请问能申请一份uhd.php 和 rand_uhd.php源文件吗？</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=36#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-36', 36);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-35" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/aa8cd0f808803c0f399080730b79b2d0?s=32&amp;r=G" alt="Chester" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">Chester</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-35">
+                    <time itemprop="commentTime"
+                          datetime="2024-10-28T14:14:25+08:00">October 28th, 2024 at 02:14 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>太酷啦！</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=35#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-35', 35);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-34" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/0d4560c4ce31cd49c4a87c35a5c7d7ef?s=32&amp;r=G" alt="Muffin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">Muffin</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-34">
+                    <time itemprop="commentTime"
+                          datetime="2024-10-11T11:12:48+08:00">October 11th, 2024 at 11:12 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>太牛啦大佬们！我用来当 Notion 的壁纸，没想到有一天居然可以使用 Bing 官方同款，还是随机的</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=34#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-34', 34);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-33" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/77273cbbdef6451d82576f9b0dc631a8?s=32&amp;r=G" alt="小松果" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">小松果</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-33">
+                    <time itemprop="commentTime"
+                          datetime="2024-10-10T21:47:47+08:00">October 10th, 2024 at 09:47 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>今天为何用不了了</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=33#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-33', 33);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-32" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/af4832c22a8dc02f755f554218ead801?s=32&amp;r=G" alt="Muse" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">Muse</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-32">
+                    <time itemprop="commentTime"
+                          datetime="2024-09-03T19:38:41+08:00">September 3rd, 2024 at 07:38 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>您的这些接口是免费使用的吗</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=32#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-32', 32);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-28" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/8606e1d4ded869b7269f35ba72262cf1?s=32&amp;r=G" alt="通天塔" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">通天塔</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-28">
+                    <time itemprop="commentTime"
+                          datetime="2024-07-11T09:59:04+08:00">July 11th, 2024 at 09:59 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主好，麻烦你发一份rand.php,rand_m.php随机的源码。2847388721@qq.com感谢</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=28#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-28', 28);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-27" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/27ae3c2cdd915c53758a0bc1ff848829?s=32&amp;r=G" alt="oll" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">oll</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-27">
+                    <time itemprop="commentTime"
+                          datetime="2024-07-07T09:49:42+08:00">July 7th, 2024 at 09:49 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>現在主頁用的API好像是這個<br>
+/hp/api/v1/imagegallery?format=json</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=27#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-27', 27);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-25" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/34be3c7c0655313619d9b91a7e6f1ee6?s=32&amp;r=G" alt="andy" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">andy</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-25">
+                    <time itemprop="commentTime"
+                          datetime="2024-06-30T20:51:24+08:00">June 30th, 2024 at 08:51 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主好，麻烦你发一份rand.php随机的源码。94436494@qq.com感谢</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=25#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-25', 25);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-26" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-26">
+                    <time itemprop="commentTime"
+                          datetime="2024-07-03T23:46:27+08:00">July 3rd, 2024 at 11:46 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>好哦，我得翻找一下电脑</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=26#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-26', 26);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-56" class="comment-body comment-child comment-level-even comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/159fd7e52df4ebf3972ce057d8278ef0?s=32&amp;r=G" alt="竹叶青" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">竹叶青</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-56">
+                    <time itemprop="commentTime"
+                          datetime="2025-03-11T11:11:35+08:00">March 11th, 2025 at 11:11 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>你的网页：bing.img.run 域名证书到期了啦，无法访问了啦</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=56#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-56', 56);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-37" class="comment-body comment-child comment-level-even comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/23462d4de35aa9e9751292a011d90d8c?s=32&amp;r=G" alt="海" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">海</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-37">
+                    <time itemprop="commentTime"
+                          datetime="2024-11-27T19:30:16+08:00">November 27th, 2024 at 07:30 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主好，我也想要一份，谢谢啦</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=37#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-37', 37);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-22" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/09368c4e48daf0926bc1b3b6afec5d9b?s=32&amp;r=G" alt="天蓝蓝" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">天蓝蓝</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-22">
+                    <time itemprop="commentTime"
+                          datetime="2024-06-07T12:03:27+08:00">June 7th, 2024 at 12:03 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主好，麻烦你就发份rand.php随机的源码。270168114@qq.com感谢</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=22#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-22', 22);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-18" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/09368c4e48daf0926bc1b3b6afec5d9b?s=32&amp;r=G" alt="天蓝蓝" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">天蓝蓝</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-18">
+                    <time itemprop="commentTime"
+                          datetime="2024-05-29T16:55:01+08:00">May 29th, 2024 at 04:55 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>博主能否提供下uhd.php  rand_uhd.php源文件。感谢你！发邮箱即可270168114@qq.com</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=18#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-18', 18);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-20" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-20">
+                    <time itemprop="commentTime"
+                          datetime="2024-06-04T17:34:12+08:00">June 4th, 2024 at 05:34 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>好</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=20#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-20', 20);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-21" class="comment-body comment-child comment-level-even comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/09368c4e48daf0926bc1b3b6afec5d9b?s=32&amp;r=G" alt="天蓝蓝" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">天蓝蓝</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-21">
+                    <time itemprop="commentTime"
+                          datetime="2024-06-07T08:45:54+08:00">June 7th, 2024 at 08:45 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>uhd.php自己搞出来了，麻烦博主就发份rand.php随机的源码。270168114@qq.com感谢！</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=21#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-21', 21);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-17" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/33edcc5ccc9d9f5a6e189ddd9f0f9931?s=32&amp;r=G" alt="撒旦" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">撒旦</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-17">
+                    <time itemprop="commentTime"
+                          datetime="2024-05-09T09:44:48+08:00">May 9th, 2024 at 09:44 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>https://bing.img.run/rand_uhd.php?type=json   接口现在访问 出现跨域 限制，是最近更新服务设置了吗？</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=17#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-17', 17);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-19" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/9e4fbc31b02933b6cb925e841d87e760?s=32&amp;r=G" alt="Mikelin" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://bing.img.run" rel="external nofollow">Mikelin</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-19">
+                    <time itemprop="commentTime"
+                          datetime="2024-06-04T17:33:05+08:00">June 4th, 2024 at 05:33 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>没有呀，</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=19#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-19', 19);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-31" class="comment-body comment-child comment-level-even comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/33edcc5ccc9d9f5a6e189ddd9f0f9931?s=32&amp;r=G" alt="撒旦" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">撒旦</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-31">
+                    <time itemprop="commentTime"
+                          datetime="2024-08-05T11:45:52+08:00">August 5th, 2024 at 11:45 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>确实跨域了，现在访问不到，不知道是不是浏览器限制，单独访问链接是没问题</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=31#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-31', 31);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-13" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/6d7defeea5f5a6b9d068fa7213251879?s=32&amp;r=G" alt="梦琪_47" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">梦琪_47</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-13">
+                    <time itemprop="commentTime"
+                          datetime="2024-01-15T16:24:05+08:00">January 15th, 2024 at 04:24 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>棒</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=13#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-13', 13);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-8" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/145799a33907dbbb1d5b391afb9dd484?s=32&amp;r=G" alt="快乐之门" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">快乐之门</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-8">
+                    <time itemprop="commentTime"
+                          datetime="2022-10-21T14:04:13+08:00">October 21st, 2022 at 02:04 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>壁纸内容故事介绍有接口吗？</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=8#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-8', 8);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-7" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/997bf676df4b96ec7d8a926ec9cc7750?s=32&amp;r=G" alt="Chen" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">Chen</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-7">
+                    <time itemprop="commentTime"
+                          datetime="2022-08-20T23:22:06+08:00">August 20th, 2022 at 11:22 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>Is random wallpaper not open source</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=7#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-7', 7);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-6" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/b1ab5d6c6b6bf63a7f275613ef76c534?s=32&amp;r=G" alt="123" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">123</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-6">
+                    <time itemprop="commentTime"
+                          datetime="2022-08-19T01:07:26+08:00">August 19th, 2022 at 01:07 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>结合iPhone的捷径，每天自动换壁纸，爽歪歪</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=6#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-6', 6);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-5" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/462c873963d3d969ed9a9fd455b514e7?s=32&amp;r=G" alt="飞鱼" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://web.xxmd.com" rel="external nofollow">飞鱼</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-5">
+                    <time itemprop="commentTime"
+                          datetime="2022-05-26T22:43:01+08:00">May 26th, 2022 at 10:43 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>非常棒的工具，请问下最新的uhd和rand相关的几个文件提供下载吗</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=5#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-5', 5);">回复</a>            </div>
+                            <div class="comment-children" itemprop="discusses">
+                    <ol class="comment-list">        <li itemscope itemtype="http://schema.org/UserComments" id="comment-29" class="comment-body comment-child comment-level-odd comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/dcf2eb3ffddb9e5fef0de8a2b6c75ef3?s=32&amp;r=G" alt="flow2000" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name"><a href="https://blog.aqcoder.cn/" rel="external nofollow">flow2000</a></cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-29">
+                    <time itemprop="commentTime"
+                          datetime="2024-07-26T00:42:19+08:00">July 26th, 2024 at 12:42 am</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>已实现此功能：https://github.com/flow2000/bing-wallpaper-api</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=29#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-29', 29);">回复</a>            </div>
+                    </li>
+        </ol>                </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-4" class="comment-body comment-parent comment-even">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/7d559fc110ca6c4e29790aaa1c3e3c7d?s=32&amp;r=G" alt="爱玩" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">爱玩</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-4">
+                    <time itemprop="commentTime"
+                          datetime="2022-05-22T23:22:19+08:00">May 22nd, 2022 at 11:22 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>那个，4k的啥时候放github啊</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=4#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-4', 4);">回复</a>            </div>
+                    </li>
+                <li itemscope itemtype="http://schema.org/UserComments" id="comment-2" class="comment-body comment-parent comment-odd">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span
+                    itemprop="image">
+                    <img class="avatar" loading="lazy" src="https://sdn.geekzu.org/avatar/3576b22fa670cf33b6c60fbb45209f6a?s=32&amp;r=G" alt="阿里百秀" width="32" height="32" />                </span>
+                <cite class="fn" itemprop="name">阿里百秀</cite>
+            </div>
+            <div class="comment-meta">
+                <a href="https://bing.img.run/api.html#comment-2">
+                    <time itemprop="commentTime"
+                          datetime="2022-05-08T19:09:38+08:00">May 8th, 2022 at 07:09 pm</time>
+                </a>
+                            </div>
+            <div class="comment-content" itemprop="commentText">
+                <p>秀秀秀</p>            </div>
+            <div class="comment-reply">
+                <a href="https://bing.img.run/api.html?replyTo=2#respond-page-35" rel="nofollow" onclick="return TypechoComment.reply('comment-2', 2);">回复</a>            </div>
+                    </li>
+        </ol>
+        
+    
+        <div id="respond-page-35" class="respond">
+        <div class="cancel-comment-reply">
+        <a id="cancel-comment-reply-link" href="https://bing.img.run/api.html#respond-page-35" rel="nofollow" style="display:none" onclick="return TypechoComment.cancelReply();">取消回复</a>        </div>
+    
+    	<h3 id="response">添加新评论</h3>
+    	<form method="post" action="https://bing.img.run/api.html/comment" id="comment-form" role="form">
+                		<p>
+                <label for="author" class="required">称呼</label>
+    			<input type="text" name="author" id="author" class="text" value="" required />
+    		</p>
+    		<p>
+                <label for="mail" class="required">Email</label>
+    			<input type="email" name="mail" id="mail" class="text" value="" required />
+    		</p>
+    		<p>
+                <label for="url">网站</label>
+    			<input type="url" name="url" id="url" class="text" placeholder="http://" value="" />
+    		</p>
+                		<p>
+                <label for="textarea" class="required">内容</label>
+                <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required ></textarea>
+            </p>
+    		<p>
+                <button type="submit" class="submit">提交评论</button>
+            </p>
+    	</form>
+    </div>
+    </div>
+<!-- end #main-->
+
+
+<div id="side-button">
+	<ul>
+		<li id="go-top"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></li>
+		<li id="go-bottom"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></li>
+		<li id="show-qrcode" onclick="showQrcode()"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span></li>
+		<li id="show-poster" onclick="showPoster()"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></li>				<li id="randomPost" onclick="location.href='https://bing.img.run/202303.html';"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></li>	</ul>
+</div>
+
+<!-- end #sidebar --><div id="no-data"></div>
+<footer class="footer anti-select">
+	<!-- bottom notice -->
+		<!-- friend link -->
+		<p class="related">友情链接：
+    	    	    		<a href="https://linhaonan.com" title="林浩楠" target="_blank">林浩楠</a>
+    	    		<a href="https://img.run/" title="图样跑酷" target="_blank">图样跑酷</a>
+    	    		<a href="https://console.dogecloud.com/register.html?iuid=6660" title="多吉云" target="_blank">多吉云</a>
+    	    		<a href="https://aiguo.news" title="爱国新闻社" target="_blank">爱国新闻社</a>
+    	    		<a href="https://presscard.hk" title="香港新闻记者证管理中心" target="_blank">香港新闻记者证管理中心</a>
+    		</p>
+		<!-- powered info -->
+		<!-- kotkeys desc -->
+		<p class="related">返回首页(H)&nbsp;跳到顶端(T)&nbsp;跳到底部(B)&nbsp;随机文章(R)&nbsp;</p>
+		<!-- counter -->
+		<!-- copy & icp -->
+	<p class="related">&copy; <a href="https://bing.img.run/" target="_blank">Bing每日壁纸档案库</a> <a href="http://beian.miit.gov.cn/" target="_blank">粤ICP备17011520号</a></p>
+	<div style="display:none;"><script defer src="https://umami.im/script.js" data-website-id="89e2409e-3e53-4e84-9391-70ca1d65ec91"></script></div></footer><!-- end #footer -->
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/bootstrap3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/js/masonry-docs.min.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/js/infinite-scroll.pkgd.min.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/js/shortcut.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/js/qrcode.js"></script>
+
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/core.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/guestures.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/hash.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/media.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/wheel.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/slideshow.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/fullscreen.js"></script>
+<script type="text/javascript" src="https://bing.img.run/usr/themes/photograph/fancybox3/js/thumbs.js"></script>
+
+<script type="text/javascript">if(history.length < 2){ $('.header-post-back').css('opacity', 0); }</script>
+
+<script type="text/javascript">
+	//lazyload
+	$(function() {
+		$("img.lazy").lazyload({
+			placeholder : "https://bing.img.run/usr/uploads/2022/05/1167446832.svg",
+			effect: "fadeIn",		});
+	});
+	//showcomment
+	$(function() {
+		if(window.location.href.indexOf("#comment-")>-1) {
+			$("#post-comments").addClass("comment-open");
+		}
+		$("#ex-comment").click(function() {
+			$("#post-comments").toggleClass("comment-open");
+		});
+	});
+	//goToTop
+	$(function(){
+		$("#go-top").hide();
+		$(window).scroll(function(){
+			if($(this).scrollTop() > 100){
+				$('#go-top').fadeIn();
+			}else{
+				$('#go-top').fadeOut();
+			}
+		});
+		$('#go-top').click(function(){
+			$('html ,body').animate({scrollTop: 0}, 300);
+			return false;
+		});
+	});
+	//goToBottom
+	$(function(){
+		$(window).scroll(function(){
+			if($(this).scrollTop() > (document.body.scrollHeight - 1000)) {
+				$('#go-bottom').fadeOut();
+			}else{
+				$('#go-bottom').fadeIn();
+			}
+		});
+		$('#go-bottom').click(function(){
+			$('html ,body').animate({scrollTop: document.body.scrollHeight}, 300);
+			return false;
+		});
+	});
+	// infinite scroll
+	// https://infinite-scroll.com/
+	if ($('a').is('ol.page-navigator li.next a')) {
+		var $grid = $('#masonry').masonry({
+			itemSelector: '.item',
+			gutter: 0,
+			isAnimated: false,
+		});
+		var msnry = $grid.data('masonry');
+		$grid.infiniteScroll({
+			path : "ol.page-navigator li.next a",
+			append : "#masonry div.item",
+			hideNav: 'ol.page-navigator',
+			history: false,
+			prefill: true,
+			outlayer: msnry,
+		});
+		$grid.on('append.infiniteScroll', function( event, response, path) {
+			$("img.lazy").lazyload();
+		});
+		$grid.on('last.infiniteScroll', function( event, response, path ) {
+			$('#no-data').html('<div>😋已经到底啦！</div>');
+		});
+	}
+	//cookie opt
+	//代码修改自 https://www.cnblogs.com/shizhouyu/p/3963122.html
+	var cookieSet = function(key,val,time) { //设置cookie方法
+		var date = new Date(); //获取当前时间
+		var expiresDays = time; //将date设置为n天以后的时间
+		date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000); //格式化为cookie识别的时间
+		document.cookie = key + "=" + val + ";expires="+date.toGMTString(); //设置cookie
+	}
+	var cookieGet = function(key) { //获取cookie方法
+		//获取cookie参数
+		var getCookie = document.cookie.replace(/[ ]/g,""); //获取cookie，并且将获得的cookie格式化，去掉空格字符
+		var arrCookie = getCookie.split(";") //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+		var tips; //声明变量tips
+		for(var i=0; i < arrCookie.length; i++) { //使用for循环查找cookie中的tips变量
+			var arr = arrCookie[i].split("="); //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+			if(key == arr[0]) { //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+				tips = arr[1]; //将cookie的值赋给变量tips
+				break; //终止for循环遍历
+			}
+		}
+		return tips;
+	}
+	var cookieDelete = function(key) { //删除cookie方法
+		var date = new Date(); //获取当前时间
+		date.setTime(date.getTime() - 10000); //将date设置为过去的时间
+		document.cookie = key + "=v; expires =" + date.toGMTString(); //设置cookie
+	}
+	//random post link
+		var randomPost = 'https://bing.img.run/202303.html';
+	if(location.hash == '#random'){ location.href = randomPost; }
+		//hotkey
+			shortcut.add("H", function() {
+			location.href = "/"; /* 返回首页 */
+		}, {
+			'type':'keydown', //事件
+			'propagate': false, //是否支持冒泡
+			'disable_in_input': true, //是否在输入框内禁用
+			'target': document, //作用范围
+		});
+		shortcut.add("T", function() {
+			$("html ,body").animate({scrollTop: 0}, 300); /* 跳到顶端 */
+		}, {
+			'type':'keydown', //事件
+			'propagate': false, //是否支持冒泡
+			'disable_in_input': true, //是否在输入框内禁用
+			'target': document, //作用范围
+		});
+		shortcut.add("B", function() {
+			$("html ,body").animate({scrollTop: document.body.scrollHeight}, 300); /* 跳到底部 */
+		}, {
+			'type':'keydown', //事件
+			'propagate': false, //是否支持冒泡
+			'disable_in_input': true, //是否在输入框内禁用
+			'target': document, //作用范围
+		});
+		shortcut.add("R", function() {
+			location.href = randomPost; /* 随机文章 */
+		}, {
+			'type':'keydown', //事件
+			'propagate': false, //是否支持冒泡
+			'disable_in_input': true, //是否在输入框内禁用
+			'target': document, //作用范围
+		});
+		//qrcode
+	var qrcodeDiv = $('<div id="qrcode" onclick="hiddQrcode()"></div>');
+	var thisPageUrl = "https://bing.img.run/api.html";
+	var qrnode = new AraleQRCode({
+        render: 'canvas',
+        correctLevel: 1,
+        text: thisPageUrl,
+        size: 100,
+        background: '#fff',
+        foreground: '#000',
+        pdground: '#55F'
+    });
+    var qrcodeImg = new Image();
+    qrcodeImg.src = qrnode.toDataURL("image/png");
+    qrcodeDiv.html(qrcodeImg);
+	$('body').append(qrcodeDiv);
+    
+	var showQrcode = function() {
+		$("#qrcode").css("display", "block");
+	}
+	var hiddQrcode = function() {
+		$("#qrcode").css("display", "none");
+	}
+	// poster
+	var saveFile = function(data, name) {
+		var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+		save_link.href = data;
+		save_link.download = name;
+		var event = document.createEvent("MouseEvents");
+		event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		save_link.dispatchEvent(event);
+	}
+ 	var dataURLtoBlob = function (dataurl) {
+    	var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      	bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    	while(n--){
+     		 u8arr[n] = bstr.charCodeAt(n);
+    	}
+    	return new Blob([u8arr], {type:mime});
+  	}
+	var drawPoster = function(posterImgSrc, posterMaskSrc, posterLogoSrc, logoText, logoDescText, posterTitleText, posterDescText, qrText) {
+	    var posterDiv = $('<div id="poster" onclick="hiddPoster()"></div>');
+    	var posterCvs = $('<canvas width="618" height="1000"></canvas>');
+    	var posterDown = $('<p>（点击图片下载海豹到本地）</p>');
+    	var posterCtx = posterCvs.get(0).getContext("2d");
+    	
+        posterCtx.fillStyle = "#FFFFFF";
+        posterCtx.fillRect(0,0,618,1000);
+        
+        posterCtx.textBaseline = 'middle';
+        posterCtx.textAlign = 'center';
+        posterCtx.fillStyle = 'gray';
+        posterCtx.font = 'normal normal 32px Arial,sans-serif';
+        posterCtx.fillText('正在拼命生成海报', 309, 800);
+        
+        var posterImg = new Image();
+        posterImg.src = posterImgSrc;
+        posterImg.onload = function() {
+            var imgW = posterImg.width;
+            var imgH = posterImg.height;
+            var sx = 0; var sy = 0; var sWaH = 0;
+            if(imgW >= imgH) {
+                var i = imgW - imgH; sx = i / 2; sWaH = imgH;
+            }else{
+                var i = imgH - imgW; sy = i / 2; sWaH = imgW;
+            }
+            posterCtx.drawImage(this, sx, sy, sWaH, sWaH, 34, 34 + 60, 550, 550);
+            
+            var posterMask = new Image();
+            posterMask.src = posterMaskSrc;
+            posterMask.onload = function() {
+                posterCtx.drawImage(this, 0, 0);
+                
+                var posterLogo = new Image();
+                posterLogo.src = posterLogoSrc;
+                posterLogo.onload = function() {
+                    posterCtx.drawImage(this, 34, 34, 36, 36);
+                    posterDown.css('opacity', 1);
+                }
+                
+                posterCtx.textAlign = 'left';
+                posterCtx.fillStyle = 'black';
+                posterCtx.font = 'normal normal 30px Arial,sans-serif';
+                posterCtx.fillText(logoText, 85, 54);
+                
+                posterCtx.textAlign = 'right';
+                posterCtx.fillStyle = 'gray';
+                posterCtx.font = 'normal normal 24px Arial,sans-serif';
+                posterCtx.fillText(logoDescText, 618 - 34, 54);
+                
+                posterCtx.textAlign = 'center';
+                var gradient = posterCtx.createLinearGradient(0, 0, 520, 0);
+                gradient.addColorStop("0","magenta");
+                gradient.addColorStop("0.5","blue");
+                gradient.addColorStop("1.0","red");
+                posterCtx.fillStyle = gradient;
+                posterCtx.font = '30px Arial,sans-serif';
+                var isSubTitleText = false;
+                while(true) {
+                    var posterTitleTextWidth = posterCtx.measureText(posterTitleText).width;
+                    if(posterTitleTextWidth > 500){
+                        posterTitleText = posterTitleText.substr(0, posterTitleText.length-1);
+                        isSubTitleText = true;
+                    }else{
+                        if(isSubTitleText) {
+                            posterTitleText = posterTitleText + '...';
+                        }
+                        break;
+                    }
+                }
+                posterCtx.fillText('\uff3b ' + posterTitleText + ' \uff3d', 309, 695);
+                
+                posterCtx.fillStyle = "#1D1E1F";
+                posterCtx.font = 'normal normal 22px Arial,sans-serif';
+                var isSubDescText = false;
+                var posterDescTextWidth = 0;
+                while(true) {
+                    posterDescTextWidth = posterCtx.measureText(posterDescText).width;
+                    if(posterDescTextWidth > 1040){
+                        posterDescText = posterDescText.substr(0, posterDescText.length-1);
+                        isSubDescText = true;
+                    } else {
+                        if(isSubDescText) {
+                            posterDescText = posterDescText + '...';
+                        }
+                        break;
+                    }
+                }
+                if(posterDescTextWidth > 550){
+                    var posterDescText1 = posterDescText;
+                    var posterDescText2 = '';
+                    while(true) {
+                        posterDescTextWidth1 = posterCtx.measureText(posterDescText1).width;
+                        if(posterDescTextWidth1 > 550){
+                            posterDescText1 = posterDescText1.substr(0, posterDescText1.length-1);
+                        } else {
+                            break;
+                        }
+                    }
+                    posterCtx.fillText(posterDescText1, 309, 755);
+                    posterDescText2 = posterDescText.slice(posterDescText1.length);
+                    posterCtx.fillText(posterDescText2, 309, 755 + 34);
+                } else {
+                    posterCtx.fillText(posterDescText, 309, 755);
+                }
+                
+                posterCtx.fillStyle = "black";
+                posterCtx.textAlign = 'right';
+                posterCtx.font = 'normal normal 20px Arial,sans-serif';
+                posterCtx.fillText(qrText, 618 - 34, 920);
+                
+                var posterQr = new Image();
+                posterQr.src = qrnode.toDataURL("image/png");
+                posterQr.onload = function() {
+                    posterCtx.drawImage(this, 0, 0, posterQr.width, posterQr.height, 44, 882, 80, 80);
+                }
+            }
+        }
+    	posterCvs.bind('click', function(){
+            var link = document.createElement("a");
+            var imgData =this.toDataURL({format: 'png', quality:1, width:618, height:1000});
+            var strDataURI = imgData.substr(22, imgData.length);
+            var blob = dataURLtoBlob(imgData);
+            var objurl = URL.createObjectURL(blob);
+            link.download = posterTitleText + ".png";
+            link.href = objurl;
+            link.click();
+    	});
+    	posterDiv.append(posterCvs).append(posterDown);
+    	$('body').append(posterDiv);
+	}
+	
+	var showPoster = function() {
+		$("#poster").css("display", "block");
+	}
+	var hiddPoster = function() {
+		$("#poster").css("display", "none");
+	}
+	
+	var posterImgSrc = 'https://bing.img.run/1920x1080.php';
+	var posterMaskSrc = 'https://bing.img.run/usr/themes/photograph/src/postermask-cloud.svg';
+	var posterLogoSrc = 'https://cn.bing.com/sa/simg/favicon-2x.ico';
+	var logoText = 'Bing每日壁纸档案库';
+	var logoDescText = 'UHD超高清';
+    var posterTitleText = 'Bing每日壁纸档案库';
+    var posterDescText = 'Bing搜索官网（cn.bing.com）每日都会更新一张高质量的壁纸，壁纸源为来自世界各地的精美摄影作品，且大部分壁纸都带有4K超高清原图。  当然，这么优秀的项目，Bing官方也提供了壁纸获取接口。不过Bing官方提供的API接口只能获取当日及过去7天的历史壁纸，再往前就获取不到了。很多人想要浏览过往Bing壁纸，于是便有了本站。';
+    var qrText = '扫描二维码浏览相册';
+    
+    drawPoster(posterImgSrc, posterMaskSrc, posterLogoSrc, logoText, logoDescText, posterTitleText, posterDescText, qrText);
+	// toast
+	var toast = function (msg) {
+		setTimeout(function(){
+			var toastWrap = $('<div class="toast-wrap"></div>');
+			var toastMsg = $('<span class="toast-msg"></span>');
+			toastMsg.html(msg);
+			toastWrap.append(toastMsg);
+			$('body').append(toastWrap);
+			toastWrap.addClass('toastAnimate');
+		},200);
+	}
+	
+	// 加密文章验证
+	// 方法来源：https://zezeshe.cn/archives/typecho-password-tixing.html
+	$(".protected").submit(function() {
+        var surl=$(".protected").attr("action"); //表单地址
+        //console.log(surl);
+        $.ajax({
+            type: "POST",
+            url: surl,
+            data: $('.protected').serialize(), //你的form
+            async: true,
+            error: function(request) {
+                alert("密码提交失败，请刷新页面重试！"); //ajax提交失败报错
+            },
+            success: function(data) {
+                if(data.indexOf("密码错误") >= 0 && data.indexOf("<title>Error</title>") >= 0 && data.indexOf("<title>Error</title>") <= 100) {
+                    alert("密码错误，请重试！"); //密码错误弹窗提醒
+                }else{
+                    location.reload();//密码正确刷新页面
+                }
+            }
+        });
+        return false;
+    });
+</script>
+
+</body>
+</html>
