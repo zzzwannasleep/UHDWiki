@@ -28,7 +28,28 @@
 }
 
 .VPContent.is-home::after {
-  content: none;
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      1200px circle at 20% 12%,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.22));
+  z-index: -1;
+  pointer-events: none;
+}
+
+html.dark .VPContent.is-home::after {
+  background:
+    radial-gradient(
+      1200px circle at 20% 12%,
+      rgba(0, 0, 0, 0.42),
+      rgba(0, 0, 0, 0.12) 60%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.24));
 }
 
 .VPHome .VPHero {
