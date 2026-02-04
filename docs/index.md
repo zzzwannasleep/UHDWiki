@@ -7,7 +7,7 @@ hero:
   tagline: 聚合资源、画质优先、全端同步 — 你需要的都在这里
   actions:
     - theme: brand
-      text: 开始使用
+      text: 使用教程
       link: /guide/getting-started
     - theme: alt
       text: 常见问题

@@ -40,8 +40,8 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: "指南", link: "/guide/getting-started" },
-      { text: "参考", link: "/reference/structure" }
+      { text: "主站", link: "https://www.uhdnow.com" },
+      { text: "网页端", link: "https://www.uhdnow.com/browser" }
     ],
 
     sidebar: {
