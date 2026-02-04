@@ -72,7 +72,17 @@ export default defineConfig({
         },
         {
           text: "技能包",
-          items: [{ text: "总览", link: "/guide/skill-pack" }]
+          items: [
+            { text: "重置流量", link: "/guide/skill-pack" },
+            { text: "绑定邮箱", link: "/guide/skill-pack/bind-email" },
+            { text: "绑定TG", link: "/guide/skill-pack/bind-tg" },
+            { text: "套餐导购", link: "/guide/skill-pack/plan-guide" },
+            { text: "修改密码", link: "/guide/skill-pack/change-password" },
+            { text: "兑换码的创建与使用", link: "/guide/skill-pack/redeem-codes" },
+            { text: "剧集申请", link: "/guide/skill-pack/request-series" },
+            { text: "洗版申请", link: "/guide/skill-pack/request-remux" },
+            { text: "追新申请", link: "/guide/skill-pack/request-new" }
+          ]
         }
       ],
       "/reference/": [
