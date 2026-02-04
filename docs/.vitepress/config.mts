@@ -52,6 +52,13 @@ export default defineConfig({
             { text: "快速开始", link: "/guide/getting-started" },
             { text: "写作规范", link: "/guide/writing" }
           ]
+        },
+        {
+          text: "PC端",
+          items: [
+            { text: "小幻影视", link: "/guide/pc/xiaohuan-yingshi" },
+            { text: "Hills Lite", link: "/guide/pc/hills-lite" }
+          ]
         }
       ],
       "/reference/": [
