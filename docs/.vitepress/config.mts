@@ -65,7 +65,6 @@ export default defineConfig({
         {
           text: "参考",
           items: [
-            { text: "目录结构", link: "/reference/structure" },
             { text: "常见问题", link: "/reference/faq" }
           ]
         }
