@@ -126,3 +126,18 @@ html.dark .VPHome .VPHomeFeatures .VPFeature {
     line-height: 20px;
   }
 }
+
+.vp-seasonal-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@media print, (prefers-reduced-motion: reduce) {
+  .vp-seasonal-canvas {
+    display: none !important;
+  }
+}
